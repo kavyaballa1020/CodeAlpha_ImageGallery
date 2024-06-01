@@ -2,43 +2,70 @@ const slides = document.querySelectorAll('.slide');
 const thumbs = document.querySelectorAll('.thumb');
 const prev = document.querySelector('.prev');
 const next = document.querySelector('.next');
+const playPauseBtn = document.querySelector('.play-pause');
 let currentSlide = 0;
+let slideInterval;
+let isPlaying = false;
 
 function showSlide(index) {
-    slides.forEach(slide => slide.classList.remove('active'));
-    thumbs.forEach(thumb => thumb.classList.remove('active'));
+    slides.forEach((slide, idx) => {
+        slide.classList.remove('active');
+        thumbs[idx].classList.remove('active');
+    });
+
     slides[index].classList.add('active');
     thumbs[index].classList.add('active');
 }
 
-prev.addEventListener('click', () => {
+function nextSlide() {
+    currentSlide = (currentSlide < slides.length - 1) ? currentSlide + 1 : 0;
+    showSlide(currentSlide);
+}
+
+function prevSlide() {
     currentSlide = (currentSlide > 0) ? currentSlide - 1 : slides.length - 1;
     showSlide(currentSlide);
+}
+
+function playSlides() {
+    slideInterval = setInterval(nextSlide, 3000);
+    playPauseBtn.textContent = 'Pause';
+    isPlaying = true;
+}
+
+function pauseSlides() {
+    clearInterval(slideInterval);
+    playPauseBtn.textContent = 'Play';
+    isPlaying = false;
+}
+
+function togglePlayPause() {
+    if (isPlaying) {
+        pauseSlides();
+    } else {
+        playSlides();
+    }
+}
+
+prev.addEventListener('click', () => {
+    pauseSlides();
+    prevSlide();
 });
 
 next.addEventListener('click', () => {
-    currentSlide = (currentSlide < slides.length - 1) ? currentSlide + 1 : 0;
-    showSlide(currentSlide);
+    pauseSlides();
+    nextSlide();
 });
 
 thumbs.forEach((thumb, index) => {
     thumb.addEventListener('click', () => {
+        pauseSlides();
         currentSlide = index;
         showSlide(currentSlide);
     });
 });
 
-let slideInterval = setInterval(() => {
-    next.click();
-}, 3000);
+playPauseBtn.addEventListener('click', togglePlayPause);
 
-// Optional: Pause the slideshow on hover
-document.querySelector('.gallery').addEventListener('mouseover', () => {
-    clearInterval(slideInterval);
-});
-
-document.querySelector('.gallery').addEventListener('mouseout', () => {
-    slideInterval = setInterval(() => {
-        next.click();
-    }, 3000);
-});
+// Ensure the first slide is active initially
+showSlide(currentSlide);

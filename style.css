@@ -23,18 +23,23 @@ body {
 }
 
 .slides {
-    position: relative;
     display: flex;
-    transition: transform 0.5s ease-in-out;
+    width: 100%;
+    position: relative;
 }
 
 .slide {
     min-width: 100%;
-    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 .slide.active {
-    display: block;
+    opacity: 1;
+    position: relative;
 }
 
 .controls {
@@ -55,6 +60,20 @@ body {
     border-radius: 50%;
 }
 
+.play-pause {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
 .thumbnails {
     display: flex;
     justify-content: center;
@@ -71,4 +90,9 @@ body {
 
 .thumb.active, .thumb:hover {
     opacity: 1;
+}
+
+img {
+    width: 100%;
+    height: auto;
 }
