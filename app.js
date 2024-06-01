@@ -28,14 +28,14 @@ function prevSlide() {
 }
 
 function playSlides() {
-    slideInterval = setInterval(nextSlide, 3000);
-    playPauseBtn.textContent = 'Pause';
+    slideInterval = setInterval(nextSlide, 1500); // 1 second interval
+    playPauseBtn.innerHTML = '&#10074;&#10074;'; // Pause symbol
     isPlaying = true;
 }
 
 function pauseSlides() {
     clearInterval(slideInterval);
-    playPauseBtn.textContent = 'Play';
+    playPauseBtn.innerHTML = '&#9658;'; // Play symbol
     isPlaying = false;
 }
 
