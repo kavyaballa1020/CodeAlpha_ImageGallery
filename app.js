@@ -28,14 +28,14 @@ function prevSlide() {
 }
 
 function playSlides() {
-    slideInterval = setInterval(nextSlide, 1000); // 1 second interval
-    playPauseBtn.innerHTML = '&#10074;&#10074;'; // Pause symbol
+    slideInterval = setInterval(nextSlide, 1500); 
+    playPauseBtn.innerHTML = '&#10074;&#10074;'; 
     isPlaying = true;
 }
 
 function pauseSlides() {
     clearInterval(slideInterval);
-    playPauseBtn.innerHTML = '&#9658;'; // Play symbol
+    playPauseBtn.innerHTML = '&#9658;'; 
     isPlaying = false;
 }
 
@@ -67,5 +67,4 @@ thumbs.forEach((thumb, index) => {
 
 playPauseBtn.addEventListener('click', togglePlayPause);
 
-// Ensure the first slide is active initially
 showSlide(currentSlide);
