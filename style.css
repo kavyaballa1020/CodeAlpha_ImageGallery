@@ -60,7 +60,6 @@ body {
     position: absolute;
     bottom: 10px;
     left: 50%;
-    transform: translateX(-50%);
     background-color: rgba(0, 0, 0, 0.5);
     color: white;
     border: none;
@@ -98,4 +97,58 @@ body {
 img {
     width: 100%;
     height: auto;
+}
+@media (max-width: 768px) {
+    .gallery-container {
+        max-width: 100%;
+        padding: 0 15px;
+    }
+
+    .prev, .next {
+        font-size: 25px;
+        padding: 8px;
+    }
+
+    .play-pause {
+        font-size: 18px;
+        padding: 8px 16px;
+    }
+
+    .thumb {
+        width: 60px;
+        height: 45px;
+        margin: 3px 3px;
+    }
+    
+.thumbnails {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+}
+
+@media (max-width: 480px) {
+    .prev, .next {
+        font-size: 20px;
+        padding: 6px;
+    }
+
+    .play-pause {
+        font-size: 16px;
+        padding: 6px 12px;
+    }
+
+    .thumb {
+        width: 50px;
+        height: 37px;
+        margin: 3px 3px;
+    }
+    
+.thumbnails {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
 }
