@@ -28,7 +28,7 @@ function prevSlide() {
 }
 
 function playSlides() {
-    slideInterval = setInterval(nextSlide, 1500); // 1 second interval
+    slideInterval = setInterval(nextSlide, 1000); // 1 second interval
     playPauseBtn.innerHTML = '&#10074;&#10074;'; // Pause symbol
     isPlaying = true;
 }
