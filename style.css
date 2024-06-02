@@ -24,22 +24,12 @@ body {
 
 .slides {
     display: flex;
-    width: 100%;
-    position: relative;
+    transition: transform 1s ease-in-out;
 }
 
 .slide {
     min-width: 100%;
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-
-.slide.active {
-    opacity: 1;
-    position: relative;
+    transition: opacity 1s ease-in-out;
 }
 
 .controls {
@@ -69,9 +59,10 @@ body {
 .play-pause {
     position: absolute;
     bottom: 10px;
-    left: 45%;
-    background-color: rgba(255, 255, 255, 0.5);
-    color: rgb(0, 0, 0);
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
     border: none;
     padding: 10px 20px;
     cursor: pointer;
@@ -81,8 +72,8 @@ body {
 }
 
 .play-pause:hover {
-    background-color: rgba(255, 255, 255, 0.8);
-    transform: scale(1.0);
+    background-color: rgba(0, 0, 0, 0.8);
+    transform: scale(1.1);
 }
 
 .thumbnails {

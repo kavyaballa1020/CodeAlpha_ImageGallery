@@ -3,17 +3,16 @@ const thumbs = document.querySelectorAll('.thumb');
 const prev = document.querySelector('.prev');
 const next = document.querySelector('.next');
 const playPauseBtn = document.querySelector('.play-pause');
+const slidesContainer = document.querySelector('.slides');
 let currentSlide = 0;
 let slideInterval;
 let isPlaying = false;
 
 function showSlide(index) {
-    slides.forEach((slide, idx) => {
-        slide.classList.remove('active');
-        thumbs[idx].classList.remove('active');
+    slidesContainer.style.transform = `translateX(-${index * 100}%)`;
+    thumbs.forEach((thumb, idx) => {
+        thumb.classList.remove('active');
     });
-
-    slides[index].classList.add('active');
     thumbs[index].classList.add('active');
 }
 
